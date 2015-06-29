@@ -66,7 +66,7 @@
     $.mobile.loading("show");
     $.ajax({
       type: 'GET',
-      url: "http://rutas.buskoo.com/assets/connect/connect.php",
+      url: "http://geocommerce.com.ec/escuelas/assets/connect/connect.php",
       contentType: "application/json",
       dataType: 'json',
       jsonp : "callback",
@@ -75,7 +75,7 @@
       }).done(function(response){
         if(response.state === 'ok'){
           $.mobile.loading("hide");
-          window.location.assign("http://rutas.buskoo.com/agent");
+          window.location.assign("http://geocommerce.com.ec/escuelas/agent/");
         }else{
           $.mobile.loading("hide");
           alert('No dispone de conexion a internet o el servidor no responde, verifique su conexión y vuelva a intentarlo.');
@@ -91,7 +91,7 @@
 </script>
 
 
-<title>Buskoo Rutas - Agentes</title>
+<title>Escuelas - Agentes (PRUEBAS)</title>
 </head>   
 
 <body>
@@ -99,7 +99,7 @@
 <div data-role="page" id="principal" data-theme="f">
   <div data-theme="f" data-role="header" align="center">
 <div class="titulo">
-Buskoo Rutas
+Escuelas - PRUEBAS
 </div>
   Sistema de Gestión de Recorridos para Instituciones
   <hr>
@@ -107,7 +107,7 @@ Buskoo Rutas
   <br>
   <div data-role="article">
     <div data-role="section" align="center">
-      <div>Conductores</div>
+      <div>Conductores - PRUEBAS</div>
       <img src="logo.png" />
     </div>
       <br><br>  
