@@ -1,0 +1,76 @@
+
+<!doctype html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+    
+    <meta http-equiv='Content-Type' content='text/html; charset=iso-8859-1' />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="X-UA-Compatible" content="IE=9">
+ 
+    <script src="jquery-1.10.2.min.js"></script>
+    <!--script src="jquery.mobile-1.3.2.min.js"></script-->
+  
+    <!--link rel="stylesheet" href="jquery.mobile-1.3.2.min.css" /-->
+
+<style>
+
+
+body {
+  position: absolute;
+    top: 35%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    color: #fff;
+     font-weight: 900;
+     font-size: 15vw;
+     background-color: #313246;
+}
+
+#cargador {    position:absolute;    top:0px;    left:0px;    width:100%;    height:100%;    background-color:white; }
+
+</style>
+
+
+
+
+<title>Rutas - Choferes</title>
+</head>   
+
+<body> <div id="cargador">Cargando...</div><!--Aquí empieza el resto de tu  contenido... --></body>
+
+<script type="text/javascript">
+
+$(document).ready(function() {
+  $('#cargador').fadeOut(1000);
+  connect();
+
+function connect(lan) {
+    $.ajax({
+      type: 'GET',
+      url: "http://www.buskko.com/assets/connect/connect.php",
+      contentType: "application/json",
+      dataType: 'json',
+      jsonp : "callback",
+      jsonpCallback: 'jsonpCallback',
+      data : {cachehora : (new Date()).getTime()},
+      }).done(function(response){
+        if(response.state === 'ok1'){
+
+          window.location.assign("http://www.buskko.com/agent/");
+        }else{
+          alert('No dispone de conexion a internet o el servidor no responde, verifique su conexión y vuelva a intentarlo.');
+        }
+     }).fail(function(jqXHR, textStatus, errorThrown){
+          alert('No dispone de conexion a internet o el servidor no responde, verifique su conexión y vuelva a intentarlo.');
+
+      }); 
+    
+  }
+  });
+  
+</script>
+
+</html>

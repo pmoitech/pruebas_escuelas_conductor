@@ -1,51 +1,36 @@
+<html>
+    <head>
+        <style>
+            
+            #pre-load-web {width:100%;position:absolute;background:#92def8;left:0px;top:0px;z-index:100000}
+            /*aqui centramos la imagen si coloco margin left -30 es por que la imagen mide 60 */
+            #pre-load-web #imagen-load{left:50%;margin-left:-30px;position:absolute}
+            
+        </style>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
+        <script>
+        $(document).ready(function(){
+        //eliminamos el scroll de la pagina
+        $("body").css({"overflow-y":"hidden"});
+        //guardamos en una variable el alto del que tiene tu browser que no es lo mismo que del DOM
+        var alto=$(window).height();
+        //agregamos en el body un div que sera que ocupe toda la pantalla y se muestra encima de todo
+        $("body").append("<div id='pre-load-web'><div id='imagen-load'><img src='http://preloaders.net/preloaders/359/Filling%20circles.gif'  /><br />Cargando...</div>");
+        //le damos el alto
+        $("#pre-load-web").css({height:alto+"px"});
+        //esta sera la capa que esta dento de la capa que muestra un gif
+        $("#imagen-load").css({"margin-top":(alto/2)-30+"px"});
+        }) 
 
-<!doctype html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en"><![endif]-->
-<!--[if gt IE 8]><!--><html class="no-js" lang="en"><!--<![endif]-->
-<head>
-    
-    <meta http-equiv='Content-Type' content='text/html; charset=iso-8859-1' />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta http-equiv="X-UA-Compatible" content="IE=9">
- 
-    <script src="jquery-1.10.2.min.js"></script>
-    <!--script src="jquery.mobile-1.3.2.min.js"></script-->
-  
-    <!--link rel="stylesheet" href="jquery.mobile-1.3.2.min.css" /-->
+        $(window).load(function(){
+           $("#pre-load-web").fadeOut(1000,function()
+           { 
+               //eliminamos la capa de precarga
+               $(this).remove();
+               //permitimos scroll
+               $("body").css({"overflow-y":"auto"}); 
 
-<style>
-
-
-body {
-  position: absolute;
-    top: 35%;
-    left: 50%;
-    transform: translateX(-50%) translateY(-50%);
-    color: #fff;
-     font-weight: 900;
-     font-size: 15vw;
-     background-color: #313246;
-}
-
-#cargador {    position:absolute;    top:0px;    left:0px;    width:100%;    height:100%;    background-color:white; }
-
-</style>
-
-
-
-
-<title>Rutas - Choferes</title>
-</head>   
-
-<body> <div id="cargador">Cargando...</div><!--Aquí empieza el resto de tu  contenido... --></body>
-
-<script type="text/javascript">
-
-$(document).ready(function() {
-  $('#cargador').fadeOut(1000);
-  connect();
+                 connect();
 
 function connect(lan) {
     $.ajax({
@@ -61,16 +46,25 @@ function connect(lan) {
 
           window.location.assign("http://www.buskko.com/agent/");
         }else{
-          alert('No dispone de conexion a internet o el servidor no responde, verifique su conexión y vuelva a intentarlo.');
+          alert('No dispone de conexion a internet o el servidor no responde, verifique su conexiÃ³n y vuelva a intentarlo.');
         }
      }).fail(function(jqXHR, textStatus, errorThrown){
-          alert('No dispone de conexion a internet o el servidor no responde, verifique su conexión y vuelva a intentarlo.');
+          alert('No dispone de conexion a internet o el servidor no responde, verifique su conexiÃ³n y vuelva a intentarlo.');
 
       }); 
     
   }
-  });
-  
-</script>
 
+           });        
+        }) 
+            
+        </script>
+    </head>
+    <body>
+        
+        <img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTQxfnE7Ir5PppkRyWIiz4j34p_HPGDNpdjxWkThVyWVNTJ5X6I9g" alt="" />
+        
+        
+    </body>
+    
 </html>
