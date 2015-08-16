@@ -11,12 +11,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=9">
  
     <script src="jquery-1.10.2.min.js"></script>
-    <script src="jquery.mobile-1.3.2.min.js"></script>
+    <!--script src="jquery.mobile-1.3.2.min.js"></script-->
   
-    <link rel="stylesheet" href="jquery.mobile-1.3.2.min.css" />
+    <!--link rel="stylesheet" href="jquery.mobile-1.3.2.min.css" /-->
 
 <style>
-.ui-bar-f {
+
+
+/*.ui-bar-f {
     font-weight: normal;
     color: black;
     background-color: white;
@@ -56,14 +58,53 @@
     font-weight: normal;
     font-size:10px;
     background-color: white;
+}*/
+
+@media only screen and (max-width: 1200px) and (min-width: 700px){
+
+   body { font-size: 70px; }
+
 }
+
+@media only screen and (min-width: 1200px) {
+
+   body { font-size: 100px; }
+
+}
+
+
+@media only screen and (max-width: 700px) and (min-width: 330px) {
+
+   body { font-size: 50px; }
+
+}
+
+
+@media only screen and (max-width: 330px) {
+
+   body { font-size: 40px; }
+
+}
+
+body {
+  position: absolute;
+    top: 35%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    color: #fff;
+     font-weight: 900;
+
+}
+
+
 
 </style>
 
 <script language="JavaScript">
+$(document).ready(function() {
+connect();
 
-  function connect(lan) {
-    $.mobile.loading("show");
+function connect(lan) {
     $.ajax({
       type: 'GET',
       url: "http://www.buskko.com/assets/connect/connect.php",
@@ -74,53 +115,29 @@
       data : {cachehora : (new Date()).getTime()},
       }).done(function(response){
         if(response.state === 'ok'){
-          $.mobile.loading("hide");
+
           window.location.assign("http://www.buskko.com/agent/");
         }else{
-          $.mobile.loading("hide");
           alert('No dispone de conexion a internet o el servidor no responde, verifique su conexión y vuelva a intentarlo.');
         }
      }).fail(function(jqXHR, textStatus, errorThrown){
-          $.mobile.loading("hide");
           alert('No dispone de conexion a internet o el servidor no responde, verifique su conexión y vuelva a intentarlo.');
 
       }); 
     
   }
+  });
   
 </script>
 
 
-<title>Escuelas - Agentes (PRUEBAS)</title>
+<title>Rutas - Choferes</title>
 </head>   
 
-<body>
+<body bgcolor="#313246">
 
-<div data-role="page" id="principal" data-theme="f">
-  <div data-theme="f" data-role="header" align="center">
-<div class="titulo">
-Escuelas - PRUEBAS
-</div>
-  Sistema de Gestión de Recorridos para Instituciones
-  <hr>
-  </div>
-  <br>
-  <div data-role="article">
-    <div data-role="section" align="center">
-      <div>Conductores - PRUEBAS</div>
-      <img src="logo.png" />
-    </div>
-      <br><br>  
-    <div data-role="section" align="center">
-         <a href="#" onclick="connect('es');" id="urles"><img src="boton_entrar.png" /></a>
-    </div>
-  </div>
 
-  <div data-theme="h" data-role="footer" data-position="fixed" align="center">
-        by Geocommerce Cia. Ltda. Quito, Ecuador - 2014
-  </div>
-
-</div>
+<p>GeoCommerce</p>
 
 </body>
 
